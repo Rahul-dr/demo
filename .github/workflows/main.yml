@@ -39,4 +39,10 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             pkill -f 'java -jar' || true
-            nohup java -jar /home/ubuntu/demo-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
+            sleep 2
+            mv /home/ubuntu/target/*.jar /home/ubuntu/app.jar
+            nohup java -jar /home/ubuntu/app.jar > /home/ubuntu/app.log 2>&1 &
+            disown
+            sleep 3
+            echo "=== Checking if app is running ==="
+            ps aux | grep java | grep -v grep
