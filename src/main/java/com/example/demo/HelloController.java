@@ -13,6 +13,6 @@ public class HelloController {
 
     @GetMapping("/hello_rahul")
     public String call_Rahul() {
-        return "Hello Rahul D R, Welcome to Spring Boot!";
+        return "Hello CI/CD Works!";
     }
 }
